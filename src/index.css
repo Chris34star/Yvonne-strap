@@ -1,0 +1,98 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-ink-900 text-white font-sans antialiased;
+    overscroll-behavior: none;
+  }
+
+  ::selection {
+    @apply bg-blush-500/30 text-white;
+  }
+}
+
+@layer components {
+  .glass {
+    @apply bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl;
+  }
+
+  .glass-card {
+    @apply bg-white/[0.04] backdrop-blur-xl border border-white/10 rounded-2xl;
+  }
+
+  .glow-blush {
+    box-shadow: 0 0 40px -10px rgba(245, 66, 122, 0.4);
+  }
+
+  .glow-petal {
+    box-shadow: 0 0 40px -10px rgba(201, 77, 196, 0.4);
+  }
+
+  .text-gradient-blush {
+    @apply bg-gradient-to-r from-blush-400 via-blush-300 to-petal-300 bg-clip-text text-transparent;
+  }
+
+  .btn-primary {
+    @apply bg-gradient-to-r from-blush-500 to-blush-400 text-white font-medium
+           px-8 py-4 rounded-2xl transition-all duration-300
+           hover:from-blush-400 hover:to-blush-300
+           hover:shadow-[0_0_30px_-5px_rgba(245,66,122,0.5)]
+           active:scale-95;
+  }
+
+  .btn-ghost {
+    @apply bg-white/5 backdrop-blur-sm border border-white/10 text-white/80 font-medium
+           px-8 py-4 rounded-2xl transition-all duration-300
+           hover:bg-white/10 hover:text-white
+           active:scale-95;
+  }
+
+  .option-btn {
+    @apply w-full text-left px-5 py-4 rounded-2xl transition-all duration-300
+           bg-white/[0.03] border border-white/10
+           hover:bg-white/[0.07] hover:border-blush-400/30
+           active:scale-[0.98];
+  }
+
+  .option-btn-selected {
+    @apply bg-blush-500/15 border-blush-400/50 glow-blush;
+  }
+
+  .input-field {
+    @apply w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-4
+           text-white placeholder-white/30
+           focus:outline-none focus:border-blush-400/50 focus:bg-white/[0.07]
+           transition-all duration-300;
+  }
+}
+
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
